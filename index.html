@@ -1,0 +1,977 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Mailbox Innovations | Professional Business Email</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Mailbox Innovations sets up and manages professional email for businesses, including custom domains, Microsoft 365 Exchange, Google Workspace, DNS, and email security.">
+  <style>
+    :root {
+      --bg: #050816;
+      --bg-alt: #080c1f;
+      --accent: #3b82f6;
+      --accent-soft: rgba(59, 130, 246, 0.12);
+      --accent-2: #22d3ee;
+      --card: #0b1024;
+      --border-subtle: rgba(148, 163, 184, 0.4);
+      --text-main: #e5e7eb;
+      --text-muted: #9ca3af;
+      --danger: #f97373;
+      --radius-lg: 18px;
+      --shadow-soft: 0 18px 45px rgba(15, 23, 42, 0.55);
+      --max-width: 1080px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top, #111827 0, #020617 50%, #000 100%);
+      color: var(--text-main);
+      min-height: 100vh;
+      line-height: 1.6;
+    }
+
+    .page {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 20px 16px 60px;
+      position: relative;
+    }
+
+    /* Subtle background glow */
+    .orb {
+      position: fixed;
+      width: 420px;
+      height: 420px;
+      border-radius: 999px;
+      background: radial-gradient(circle, rgba(56, 189, 248, 0.2), transparent 60%);
+      top: -120px;
+      right: -80px;
+      z-index: -1;
+      filter: blur(3px);
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 40px;
+      gap: 16px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .avatar {
+      width: 40px;
+      height: 40px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 18px;
+      color: white;
+      box-shadow: 0 10px 30px rgba(37, 99, 235, 0.55);
+    }
+
+    .titles h1 {
+      font-size: 20px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: #f9fafb;
+    }
+
+    .titles p {
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    nav {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .nav-pill {
+      font-size: 13px;
+      padding: 7px 14px;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.3);
+      color: var(--text-muted);
+      text-decoration: none;
+      backdrop-filter: blur(12px);
+      background: linear-gradient(to bottom, rgba(15,23,42,0.85), rgba(15,23,42,0.4));
+      transition: all 0.18s ease-out;
+    }
+
+    .nav-pill:hover {
+      border-color: var(--accent);
+      color: #e5f0ff;
+      transform: translateY(-1px);
+      box-shadow: 0 10px 30px rgba(15, 23, 42, 0.7);
+    }
+
+    main {
+      display: flex;
+      flex-direction: column;
+      gap: 40px;
+    }
+
+    /* Hero */
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 3fr) minmax(0, 2.5fr);
+      gap: 30px;
+      align-items: center;
+    }
+
+    .hero-kicker {
+      font-size: 13px;
+      color: var(--accent-2);
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      margin-bottom: 12px;
+    }
+
+    .hero h2 {
+      font-size: clamp(30px, 4vw, 38px);
+      line-height: 1.15;
+      margin-bottom: 14px;
+    }
+
+    .hero h2 span.highlight {
+      background: linear-gradient(120deg, var(--accent), var(--accent-2));
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+
+    .hero p {
+      color: var(--text-muted);
+      font-size: 15px;
+      max-width: 34rem;
+    }
+
+    .hero-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin: 18px 0 22px;
+    }
+
+    .hero-badge {
+      font-size: 11px;
+      padding: 6px 11px;
+      border-radius: 999px;
+      background: rgba(15,23,42,0.85);
+      border: 1px solid rgba(148, 163, 184, 0.55);
+      color: var(--text-muted);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 999px;
+      background: #22c55e;
+      box-shadow: 0 0 8px rgba(34, 197, 94, 0.9);
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .btn-primary {
+      border: none;
+      outline: none;
+      border-radius: 999px;
+      padding: 10px 18px;
+      font-size: 14px;
+      font-weight: 500;
+      background: linear-gradient(to right, var(--accent), var(--accent-2));
+      color: white;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      box-shadow: 0 18px 40px rgba(37, 99, 235, 0.6);
+      transition: transform 0.16s ease-out, box-shadow 0.16s ease-out;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 22px 55px rgba(37, 99, 235, 0.9);
+    }
+
+    .btn-ghost {
+      border-radius: 999px;
+      padding: 9px 16px;
+      font-size: 13px;
+      background: rgba(15,23,42,0.7);
+      border: 1px solid rgba(148, 163, 184, 0.6);
+      color: var(--text-muted);
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      text-decoration: none;
+      transition: all 0.18s ease-out;
+    }
+
+    .btn-ghost:hover {
+      border-color: var(--accent);
+      color: #e5f0ff;
+      transform: translateY(-1px);
+    }
+
+    .hero-note {
+      margin-top: 14px;
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    .hero-card {
+      background: radial-gradient(circle at top left, rgba(37, 99, 235, 0.35), transparent 60%),
+                  radial-gradient(circle at bottom right, rgba(236, 72, 153, 0.22), transparent 60%),
+                  var(--card);
+      border-radius: 24px;
+      border: 1px solid rgba(148, 163, 184, 0.5);
+      padding: 18px 16px 18px;
+      box-shadow: var(--shadow-soft);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-card h3 {
+      font-size: 14px;
+      margin-bottom: 16px;
+      color: #e5e7eb;
+    }
+
+    .hero-card-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
+      gap: 14px;
+      font-size: 12px;
+    }
+
+    .hero-card-section-title {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--text-muted);
+      margin-bottom: 6px;
+    }
+
+    .chip-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .chip {
+      padding: 4px 9px;
+      border-radius: 999px;
+      background: rgba(15,23,42,0.78);
+      border: 1px solid rgba(148, 163, 184, 0.7);
+      font-size: 11px;
+      color: var(--text-main);
+    }
+
+    .stacked {
+      margin-top: 6px;
+      padding: 7px 9px;
+      border-radius: 10px;
+      background: rgba(15,23,42,0.8);
+      border: 1px solid rgba(148, 163, 184, 0.5);
+    }
+
+    .stacked strong {
+      font-size: 11px;
+      color: #e5e7eb;
+      display: block;
+      margin-bottom: 2px;
+    }
+
+    .stacked span {
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+
+    .tagline-strip {
+      margin-top: 14px;
+      padding-top: 10px;
+      border-top: 1px solid rgba(148, 163, 184, 0.45);
+      font-size: 11px;
+      color: var(--text-muted);
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .tag-pill {
+      border-radius: 999px;
+      padding: 4px 9px;
+      border: 1px solid rgba(148, 163, 184, 0.7);
+      background: rgba(15,23,42,0.85);
+      font-size: 11px;
+      color: var(--text-main);
+    }
+
+    /* Sections */
+    section {
+      border-radius: var(--radius-lg);
+      background: rgba(15, 23, 42, 0.85);
+      border: 1px solid rgba(148, 163, 184, 0.45);
+      padding: 18px 16px 20px;
+      box-shadow: 0 18px 40px rgba(15, 23, 42, 0.8);
+    }
+
+    section + section {
+      margin-top: 4px;
+    }
+
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 10px;
+      margin-bottom: 12px;
+    }
+
+    .section-header h3 {
+      font-size: 16px;
+      color: #f9fafb;
+    }
+
+    .section-header p {
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    /* Why upgrade */
+    .two-col {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+      gap: 16px;
+      font-size: 13px;
+    }
+
+    .list {
+      list-style: none;
+      display: grid;
+      gap: 8px;
+    }
+
+    .list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      color: var(--text-muted);
+    }
+
+    .list li span.icon {
+      font-size: 15px;
+      line-height: 1.4;
+    }
+
+    /* Services cards */
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+      gap: 12px;
+      margin-top: 4px;
+    }
+
+    .card {
+      background: linear-gradient(150deg, var(--card), #020617);
+      border-radius: 16px;
+      padding: 12px 11px;
+      border: 1px solid rgba(148, 163, 184, 0.5);
+      font-size: 13px;
+    }
+
+    .card h4 {
+      font-size: 14px;
+      margin-bottom: 6px;
+      color: #e5e7eb;
+    }
+
+    .card p {
+      color: var(--text-muted);
+      margin-bottom: 6px;
+    }
+
+    .pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 4px;
+    }
+
+    .pill {
+      padding: 3px 8px;
+      border-radius: 999px;
+      font-size: 11px;
+      border: 1px solid rgba(148, 163, 184, 0.6);
+      color: var(--text-muted);
+    }
+
+    /* Process */
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 10px;
+      margin-top: 6px;
+      font-size: 13px;
+    }
+
+    .step {
+      background: rgba(15, 23, 42, 0.9);
+      border-radius: 14px;
+      padding: 10px 10px;
+      border: 1px dashed rgba(148, 163, 184, 0.6);
+    }
+
+    .step-label {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--accent-2);
+      margin-bottom: 4px;
+    }
+
+    .step strong {
+      display: block;
+      margin-bottom: 3px;
+      color: #e5e7eb;
+    }
+
+    .step p {
+      color: var(--text-muted);
+    }
+
+    /* Pricing */
+    .pricing-note {
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-bottom: 10px;
+    }
+
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+      gap: 14px;
+      font-size: 13px;
+    }
+
+    .pricing-card {
+      border-radius: 16px;
+      border: 1px solid rgba(148, 163, 184, 0.7);
+      background: radial-gradient(circle at top, rgba(59, 130, 246, 0.2), transparent 65%),
+                  rgba(15, 23, 42, 0.95);
+      padding: 11px 11px;
+    }
+
+    .pricing-card h4 {
+      font-size: 14px;
+      margin-bottom: 4px;
+      color: #e5e7eb;
+    }
+
+    .pricing-card p {
+      color: var(--text-muted);
+      margin-bottom: 6px;
+    }
+
+    .price-line {
+      font-size: 13px;
+      margin-top: 4px;
+    }
+
+    .price-line span {
+      color: var(--accent-2);
+      font-weight: 500;
+    }
+
+    /* FAQ */
+    .faq-list {
+      display: grid;
+      gap: 8px;
+      font-size: 13px;
+    }
+
+    .faq-item {
+      border-radius: 12px;
+      background: rgba(15,23,42,0.9);
+      border: 1px solid rgba(148, 163, 184, 0.5);
+      padding: 8px 9px;
+    }
+
+    .faq-item strong {
+      display: block;
+      margin-bottom: 3px;
+      color: #e5e7eb;
+    }
+
+    .faq-item p {
+      color: var(--text-muted);
+    }
+
+    /* Contact */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+      gap: 16px;
+      font-size: 13px;
+    }
+
+    .contact-grid form {
+      display: grid;
+      gap: 8px;
+    }
+
+    label {
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    input, textarea {
+      width: 100%;
+      border-radius: 10px;
+      border: 1px solid rgba(148, 163, 184, 0.75);
+      background: rgba(15, 23, 42, 0.9);
+      color: var(--text-main);
+      padding: 7px 8px;
+      font-size: 13px;
+      outline: none;
+    }
+
+    textarea {
+      min-height: 80px;
+      resize: vertical;
+    }
+
+    input:focus, textarea:focus {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 1px rgba(59, 130, 246, 0.65);
+    }
+
+    .contact-hint {
+      color: var(--text-muted);
+      font-size: 12px;
+      margin-top: 4px;
+    }
+
+    footer {
+      margin-top: 26px;
+      padding-top: 14px;
+      border-top: 1px solid rgba(148, 163, 184, 0.4);
+      font-size: 12px;
+      color: var(--text-muted);
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    footer a {
+      color: var(--text-muted);
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      color: var(--accent-2);
+      text-decoration: underline;
+    }
+
+    @media (max-width: 768px) {
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      nav {
+        justify-content: flex-start;
+      }
+      .hero {
+        grid-template-columns: minmax(0, 1fr);
+      }
+      .hero-card {
+        order: -1;
+      }
+      .two-col,
+      .pricing-grid,
+      .contact-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="orb"></div>
+  <div class="page">
+    <header>
+      <div class="brand">
+        <div class="avatar">MI</div>
+        <div class="titles">
+          <h1>Mailbox Innovations</h1>
+          <p>Clean, professional business email for real companies</p>
+        </div>
+      </div>
+      <nav>
+        <a class="nav-pill" href="#why">Why upgrade</a>
+        <a class="nav-pill" href="#services">Services</a>
+        <a class="nav-pill" href="#process">How it works</a>
+        <a class="nav-pill" href="#pricing">Pricing</a>
+        <a class="nav-pill" href="#contact">Contact</a>
+      </nav>
+    </header>
+
+    <main>
+      <!-- HERO -->
+      <section class="hero" id="top">
+        <div>
+          <div class="hero-kicker">Business email that actually looks like business</div>
+          <h2>
+            Turn <span class="highlight">personal Gmail accounts</span>
+            into a real company inbox.
+          </h2>
+          <p>
+            If your team is using addresses like <strong>yourname@gmail.com</strong> on
+            invoices, proposals, or client emails, you are leaving a weak first impression.
+            Mailbox Innovations sets up and manages branded email on your own domain
+            with Microsoft Exchange and Google Workspace.
+          </p>
+
+          <div class="hero-badges">
+            <div class="hero-badge">
+              <span class="dot"></span>
+              Live and managed for you
+            </div>
+            <div class="hero-badge">Custom domains and DNS setup</div>
+            <div class="hero-badge">SPF / DKIM / DMARC configured</div>
+          </div>
+
+          <div class="hero-actions">
+            <a href="#contact" class="btn-primary">
+              Schedule a quick consult
+              <span>↗</span>
+            </a>
+            <a href="#services" class="btn-ghost">
+              View services
+            </a>
+          </div>
+
+          <div class="hero-note">
+            We help you move from “Just email me at my Gmail” to
+            <strong>name@yourcompany.com</strong> with proper security and support.
+          </div>
+        </div>
+
+        <aside class="hero-card" aria-label="Overview of what we set up">
+          <h3>What Mailbox Innovations does for you</h3>
+          <div class="hero-card-grid">
+            <div>
+              <div class="hero-card-section-title">Platforms</div>
+              <div class="chip-row">
+                <span class="chip">Microsoft 365 Exchange</span>
+                <span class="chip">Google Workspace</span>
+                <span class="chip">Hybrid and migrations</span>
+              </div>
+
+              <div class="stacked">
+                <strong>From personal to professional</strong>
+                <span>
+                  We take existing personal Gmail accounts and move them to real
+                  business mailboxes, with the same familiar tools and a cleaner brand.
+                </span>
+              </div>
+            </div>
+            <div>
+              <div class="hero-card-section-title">Included in every setup</div>
+              <ul class="list">
+                <li><span class="icon">✔</span><span>Domain purchase and DNS management</span></li>
+                <li><span class="icon">✔</span><span>Mailbox creation and aliases</span></li>
+                <li><span class="icon">✔</span><span>Security records and spam protection</span></li>
+              </ul>
+            </div>
+          </div>
+          <div class="tagline-strip">
+            <span>All the technical work handled. You just log in and use your new address.</span>
+            <span class="tag-pill">Done for you</span>
+          </div>
+        </aside>
+      </section>
+
+      <!-- WHY UPGRADE -->
+      <section id="why">
+        <div class="section-header">
+          <h3>Why move off personal Gmail</h3>
+          <p>Better first impressions, better security, and less confusion for your clients.</p>
+        </div>
+        <div class="two-col">
+          <div>
+            <ul class="list">
+              <li>
+                <span class="icon">🏢</span>
+                <span>
+                  <strong>Look like a real company</strong><br />
+                  A custom domain address such as <strong>info@mailboxinnovations.com</strong>
+                  looks far more trustworthy than a free mailbox on a generic provider.
+                </span>
+              </li>
+              <li>
+                <span class="icon">🧾</span>
+                <span>
+                  <strong>Less confusion for clients</strong><br />
+                  Stop mixing personal and business messages in one inbox and avoid
+                  sending invoices from the wrong account.
+                </span>
+              </li>
+              <li>
+                <span class="icon">🔒</span>
+                <span>
+                  <strong>Modern security</strong><br />
+                  SPF, DKIM, and DMARC records help prove that emails are really from you and
+                  reduce the chance of spoofing and phishing.
+                </span>
+              </li>
+              <li>
+                <span class="icon">📈</span>
+                <span>
+                  <strong>Ready for growth</strong><br />
+                  As you add staff, shared inboxes and role based addresses
+                  (sales@, billing@, support@) keep things organized.
+                </span>
+              </li>
+            </ul>
+          </div>
+          <div>
+            <ul class="list">
+              <li>
+                <span class="icon">⚙️</span>
+                <span>
+                  <strong>Stay on the tools you know</strong><br />
+                  We can keep you on Gmail (Google Workspace) or move you to Outlook
+                  (Microsoft 365) with proper business licensing.
+                </span>
+              </li>
+              <li>
+                <span class="icon">🧩</span>
+                <span>
+                  <strong>Integrate with your apps</strong><br />
+                  CRMs, booking systems, and document tools work best with a real
+                  business email domain.
+                </span>
+              </li>
+              <li>
+                <span class="icon">🛡️</span>
+                <span>
+                  <strong>Email security managed for you</strong><br />
+                  We monitor the DNS records related to email and help keep your
+                  domain reputation healthy.
+                </span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- SERVICES -->
+      <section id="services">
+        <div class="section-header">
+          <h3>Services</h3>
+          <p>From “I just bought a domain” to live mailboxes your team can use today.</p>
+        </div>
+        <div class="cards">
+          <div class="card">
+            <h4>Domain purchase and setup</h4>
+            <p>
+              Help choosing a clear domain, purchasing it, and wiring it up to modern
+              email providers correctly.
+            </p>
+            <div class="pill-row">
+              <span class="pill">Domain search</span>
+              <span class="pill">Registrar setup</span>
+              <span class="pill">DNS management</span>
+            </div>
+          </div>
+
+          <div class="card">
+            <h4>Microsoft 365 Exchange setup</h4>
+            <p>
+              Full configuration of Microsoft 365 with Exchange Online, mailboxes,
+              aliases, and basic policies.
+            </p>
+            <div class="pill-row">
+              <span class="pill">Exchange mailboxes</span>
+              <span class="pill">Outlook support</span>
+              <span class="pill">MFA guidance</span>
+            </div>
+          </div>
+
+          <div class="card">
+            <h4>Google Workspace setup</h4>
+            <p>
+              Move your team from personal Gmail addresses to real company accounts
+              inside Google Workspace.
+            </p>
+            <div class="pill-row">
+              <span class="pill">Gmail for business</span>
+              <span class="pill">Calendar and Drive</span>
+              <span class="pill">Group addresses</span>
+            </div>
+          </div>
+
+          <div class="card">
+            <h4>Email security and DNS</h4>
+            <p>
+              We configure SPF, DKIM, and DMARC for your domain and help monitor
+              deliverability.
+            </p>
+            <div class="pill-row">
+              <span class="pill">SPF</span>
+              <span class="pill">DKIM</span>
+              <span class="pill">DMARC</span>
+              <span class="pill">Spam and spoofing protection</span>
+            </div>
+          </div>
+
+          <div class="card">
+            <h4>Mailbox migration</h4>
+            <p>
+              When possible, we move mail from personal accounts into the new
+              business mailboxes or build a clean starting point with forwarding.
+            </p>
+            <div class="pill-row">
+              <span class="pill">Gmail to Workspace</span>
+              <span class="pill">IMAP imports</span>
+              <span class="pill">Forwarding rules</span>
+            </div>
+          </div>
+
+          <div class="card">
+            <h4>Ongoing management</h4>
+            <p>
+              Add and remove users, manage aliases, and make DNS changes so your
+              email stays stable as your business grows.
+            </p>
+            <div class="pill-row">
+              <span class="pill">User lifecycle</span>
+              <span class="pill">DNS updates</span>
+              <span class="pill">Policy adjustments</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- PROCESS -->
+      <section id="process">
+        <div class="section-header">
+          <h3>How it works</h3>
+          <p>Simple, guided steps with clear communication.</p>
+        </div>
+        <div class="steps">
+          <div class="step">
+            <div class="step-label">Step 1</div>
+            <strong>Quick discovery call</strong>
+            <p>
+              We review how you are using email today, which apps you rely on,
+              and whether Microsoft 365 or Google Workspace fits better.
+            </p>
+          </div>
+          <div class="step">
+            <div class="step-label">Step 2</div>
+            <strong>Domain and platform setup</strong>
+            <p>
+              We purchase or connect your domain, configure DNS, and set up your
+              mailboxes, groups, and security records.
+            </p>
+          </div>
+          <div class="step">
+            <div class="step-label">Step 3</div>
+            <strong>Migration and go live</strong>
+            <p>
+              We help each user sign in, move mail where possible, set up their
+              devices, and confirm that sending and receiving works.
+            </p>
+          </div>
+          <div class="step">
+            <div class="step-label">Step 4</div>
+            <strong>Support and adjustments</strong>
+            <p>
+              We are available for follow up changes, new staff, and ongoing
+              DNS or security adjustments.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- PRICING -->
+      <section id="pricing">
+        <div class="section-header">
+          <h3>Pricing</h3>
+          <p>Transparent setup fee and flexible options for ongoing management.</p>
+        </div>
+        <p class="pricing-note">
+          Exact pricing depends on the number of users and whether you choose Microsoft 365
+          or Google Workspace. Licensing costs from Microsoft or Google are separate and billed
+          at their standard rates.
+        </p>
+        <div class="pricing-grid">
+          <div class="pricing-card">
+            <h4>Standard setup</h4>
+            <p>
+              For small teams moving off personal Gmail or Yahoo into a real
+              business domain with up to 10 users.
+            </p>
+            <ul class="list">
+              <li><span class="icon">✔</span><span>Domain purchase or connection</span></li>
+              <li><span class="icon">✔</span><span>Initial DNS and security records</span></li>
+              <li><span class="icon">✔</span><span>Up to 10 mailboxes and aliases</span></li>
+              <li><span class="icon">✔</span><span>Basic migration or forwarding rules</span></li>
+            </ul>
+            <p class="price-line">
+              Typical setup fee: <span>contact for a quote</span>
+            </p>
+          </div>
+          <div>
+            <p>
+              For larger teams, more complex migrations, or ongoing management
+              (adding users, updating DNS, policy tuning), we can provide a
+              monthly management option or on demand support.
+            </p>
+            <p class="contact-hint">
+              Include how many users you have when you reach out and whether you
+              prefer Microsoft 365 or Google Workspace. We reply with a simple estimate,
+              not a long sales pitch.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- FAQ -->
+      <section id="faq">
+        <div class="section-header">
+          <h3>Common questions</h3>
+          <p>Short answers now, more detail when we talk.</p>
+        </div>
+        <div class="faq-list">
+          <div class="faq-item">
