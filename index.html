@@ -7,8 +7,9 @@
   <meta name="description" content="Mailbox Innovations sets up and manages professional email for businesses, including custom domains, Microsoft 365 Exchange, Google Workspace, DNS, and email security.">
   <style>
     :root {
-      --bg: #050816;
-      --bg-alt: #080c1f;
+      --bg1: #020617;
+      --bg2: #020617;
+      --bg3: #020617;
       --accent: #3b82f6;
       --accent-soft: rgba(59, 130, 246, 0.12);
       --accent-2: #22d3ee;
@@ -16,7 +17,6 @@
       --border-subtle: rgba(148, 163, 184, 0.4);
       --text-main: #e5e7eb;
       --text-muted: #9ca3af;
-      --danger: #f97373;
       --radius-lg: 18px;
       --shadow-soft: 0 18px 45px rgba(15, 23, 42, 0.55);
       --max-width: 1080px;
@@ -31,9 +31,24 @@
     body {
       font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       background: radial-gradient(circle at top, #111827 0, #020617 50%, #000 100%);
+      background-size: 200% 200%;
       color: var(--text-main);
       min-height: 100vh;
       line-height: 1.6;
+      animation: bgShift 22s ease-in-out infinite alternate;
+      overflow-x: hidden;
+    }
+
+    @keyframes bgShift {
+      0% {
+        background-position: 0% 0%;
+      }
+      50% {
+        background-position: 50% 100%;
+      }
+      100% {
+        background-position: 100% 0%;
+      }
     }
 
     .page {
@@ -43,17 +58,45 @@
       position: relative;
     }
 
-    /* Subtle background glow */
-    .orb {
+    /* Floating icons in background */
+    .bg-icon {
       position: fixed;
-      width: 420px;
-      height: 420px;
-      border-radius: 999px;
-      background: radial-gradient(circle, rgba(56, 189, 248, 0.2), transparent 60%);
-      top: -120px;
-      right: -80px;
+      font-size: 46px;
+      opacity: 0.12;
+      pointer-events: none;
       z-index: -1;
-      filter: blur(3px);
+      filter: blur(0.2px);
+      animation: float 18s ease-in-out infinite alternate;
+    }
+
+    .bg-icon.email {
+      top: 10%;
+      left: 5%;
+      animation-delay: 0s;
+    }
+
+    .bg-icon.shield {
+      top: 60%;
+      right: 6%;
+      animation-delay: 4s;
+    }
+
+    .bg-icon.cloud {
+      top: 30%;
+      right: 20%;
+      animation-delay: 8s;
+    }
+
+    @keyframes float {
+      0% {
+        transform: translateY(0) translateX(0) scale(1);
+      }
+      50% {
+        transform: translateY(-25px) translateX(10px) scale(1.04);
+      }
+      100% {
+        transform: translateY(15px) translateX(-8px) scale(1);
+      }
     }
 
     header {
@@ -67,26 +110,27 @@
     .brand {
       display: flex;
       align-items: center;
-      gap: 14px;
+      gap: 12px;
     }
 
-    .avatar {
-      width: 40px;
-      height: 40px;
-      border-radius: 999px;
-      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+    .logo-wrap {
       display: flex;
       align-items: center;
-      justify-content: center;
-      font-weight: 700;
-      font-size: 18px;
-      color: white;
-      box-shadow: 0 10px 30px rgba(37, 99, 235, 0.55);
+      gap: 10px;
+    }
+
+    .logo-svg {
+      width: 46px;
+      height: 46px;
+      border-radius: 999px;
+      padding: 7px;
+      background: radial-gradient(circle at 20% 0%, rgba(56, 189, 248, 0.6), rgba(59, 130, 246, 0.2) 55%, transparent 75%);
+      box-shadow: 0 10px 35px rgba(37, 99, 235, 0.8);
     }
 
     .titles h1 {
-      font-size: 20px;
-      letter-spacing: 0.06em;
+      font-size: 22px;
+      letter-spacing: 0.08em;
       text-transform: uppercase;
       color: #f9fafb;
     }
@@ -246,77 +290,146 @@
       color: var(--text-muted);
     }
 
-    .hero-card {
+    /* Hero visual: inbox + photo */
+    .hero-visual {
       background: radial-gradient(circle at top left, rgba(37, 99, 235, 0.35), transparent 60%),
                   radial-gradient(circle at bottom right, rgba(236, 72, 153, 0.22), transparent 60%),
                   var(--card);
       border-radius: 24px;
       border: 1px solid rgba(148, 163, 184, 0.5);
-      padding: 18px 16px 18px;
+      padding: 16px 14px 16px;
       box-shadow: var(--shadow-soft);
       position: relative;
       overflow: hidden;
     }
 
-    .hero-card h3 {
-      font-size: 14px;
-      margin-bottom: 16px;
-      color: #e5e7eb;
-    }
-
-    .hero-card-grid {
-      display: grid;
-      grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
-      gap: 14px;
-      font-size: 12px;
-    }
-
-    .hero-card-section-title {
-      font-size: 11px;
-      text-transform: uppercase;
-      letter-spacing: 0.16em;
-      color: var(--text-muted);
-      margin-bottom: 6px;
-    }
-
-    .chip-row {
+    .hero-visual-header {
       display: flex;
-      flex-wrap: wrap;
-      gap: 6px;
-    }
-
-    .chip {
-      padding: 4px 9px;
-      border-radius: 999px;
-      background: rgba(15,23,42,0.78);
-      border: 1px solid rgba(148, 163, 184, 0.7);
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 10px;
       font-size: 11px;
-      color: var(--text-main);
+      color: var(--text-muted);
     }
 
-    .stacked {
-      margin-top: 6px;
-      padding: 7px 9px;
-      border-radius: 10px;
+    .hero-visual-title {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .hero-visual-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: #22c55e;
+      box-shadow: 0 0 10px rgba(34, 197, 94, 0.9);
+    }
+
+    .hero-visual-body {
+      display: grid;
+      grid-template-columns: minmax(0, 1.4fr) minmax(0, 1.1fr);
+      gap: 10px;
+    }
+
+    .mock-inbox {
+      background: rgba(15,23,42,0.9);
+      border-radius: 14px;
+      padding: 10px;
+      border: 1px solid rgba(148, 163, 184, 0.5);
+      font-size: 11px;
+    }
+
+    .mock-inbox-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 6px;
+      color: var(--text-muted);
+    }
+
+    .mock-inbox-row {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 4px;
+      align-items: baseline;
+      padding: 4px 4px;
+      border-radius: 9px;
+      margin-bottom: 3px;
       background: rgba(15,23,42,0.8);
+      border: 1px solid transparent;
+      animation: rowPulse 8s ease-in-out infinite;
+    }
+
+    .mock-inbox-row:nth-child(2) {
+      animation-delay: 2s;
+    }
+    .mock-inbox-row:nth-child(3) {
+      animation-delay: 4s;
+    }
+
+    @keyframes rowPulse {
+      0%, 100% {
+        border-color: transparent;
+      }
+      50% {
+        border-color: rgba(59, 130, 246, 0.7);
+      }
+    }
+
+    .mock-inbox-row strong {
+      color: #e5e7eb;
+      display: block;
+    }
+
+    .mock-inbox-row span {
+      color: var(--text-muted);
+      font-size: 10px;
+    }
+
+    .mock-inbox-tag {
+      font-size: 9px;
+      padding: 2px 6px;
+      border-radius: 999px;
+      background: rgba(37, 99, 235, 0.2);
+      color: var(--accent-2);
+    }
+
+    .hero-photo {
+      border-radius: 14px;
+      overflow: hidden;
+      border: 1px solid rgba(148, 163, 184, 0.5);
+      position: relative;
+    }
+
+    .hero-photo img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transform: scale(1.05);
+      transition: transform 3s ease-out;
+    }
+
+    .hero-photo:hover img {
+      transform: scale(1.09);
+    }
+
+    .hero-photo-caption {
+      position: absolute;
+      left: 8px;
+      bottom: 8px;
+      padding: 4px 7px;
+      border-radius: 999px;
+      font-size: 10px;
+      background: rgba(15,23,42,0.82);
+      color: var(--text-muted);
       border: 1px solid rgba(148, 163, 184, 0.5);
     }
 
-    .stacked strong {
-      font-size: 11px;
-      color: #e5e7eb;
-      display: block;
-      margin-bottom: 2px;
-    }
-
-    .stacked span {
-      font-size: 11px;
-      color: var(--text-muted);
-    }
-
     .tagline-strip {
-      margin-top: 14px;
-      padding-top: 10px;
+      margin-top: 8px;
+      padding-top: 8px;
       border-top: 1px solid rgba(148, 163, 184, 0.45);
       font-size: 11px;
       color: var(--text-muted);
@@ -338,7 +451,7 @@
     /* Sections */
     section {
       border-radius: var(--radius-lg);
-      background: rgba(15, 23, 42, 0.85);
+      background: rgba(15, 23, 42, 0.9);
       border: 1px solid rgba(148, 163, 184, 0.45);
       padding: 18px 16px 20px;
       box-shadow: 0 18px 40px rgba(15, 23, 42, 0.8);
@@ -465,6 +578,36 @@
     }
 
     .step p {
+      color: var(--text-muted);
+    }
+
+    /* Tech imagery strip */
+    .visual-strip {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 10px;
+      margin-top: 8px;
+      font-size: 12px;
+    }
+
+    .visual-card {
+      border-radius: 14px;
+      overflow: hidden;
+      border: 1px solid rgba(148, 163, 184, 0.5);
+      background: rgba(15,23,42,0.8);
+      position: relative;
+    }
+
+    .visual-card img {
+      width: 100%;
+      height: 120px;
+      object-fit: cover;
+      display: block;
+      filter: saturate(1.05);
+    }
+
+    .visual-card-caption {
+      padding: 7px 9px;
       color: var(--text-muted);
     }
 
@@ -613,7 +756,7 @@
       .hero {
         grid-template-columns: minmax(0, 1fr);
       }
-      .hero-card {
+      .hero-visual {
         order: -1;
       }
       .two-col,
@@ -625,14 +768,36 @@
   </style>
 </head>
 <body>
-  <div class="orb"></div>
+  <!-- Floating animated icons that tie into your services -->
+  <div class="bg-icon email">✉️</div>
+  <div class="bg-icon shield">🛡️</div>
+  <div class="bg-icon cloud">☁️</div>
+
   <div class="page">
     <header>
       <div class="brand">
-        <div class="avatar">MI</div>
+        <div class="logo-wrap">
+          <!-- SIMPLE LOGO (SVG) -->
+          <svg class="logo-svg" viewBox="0 0 64 64" aria-hidden="true">
+            <defs>
+              <linearGradient id="logoGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#60a5fa" />
+                <stop offset="50%" stop-color="#22d3ee" />
+                <stop offset="100%" stop-color="#4f46e5" />
+              </linearGradient>
+            </defs>
+            <rect x="6" y="10" width="52" height="36" rx="9" fill="rgba(15,23,42,0.95)" stroke="url(#logoGrad)" stroke-width="2.2" />
+            <path d="M10 14 L32 30 L54 14" fill="none" stroke="#22d3ee" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round" />
+            <path d="M14 40 L26 30 L32 34 L38 30 L50 40" fill="none" stroke="#60a5fa" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+            <!-- stylized MI in the corner -->
+            <text x="13" y="51" font-size="11" fill="#e5e7eb" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif">
+              MI
+            </text>
+          </svg>
+        </div>
         <div class="titles">
           <h1>Mailbox Innovations</h1>
-          <p>Clean, professional business email for real companies</p>
+          <p>Clean, professional email for growing businesses</p>
         </div>
       </div>
       <nav>
@@ -685,32 +850,50 @@
           </div>
         </div>
 
-        <aside class="hero-card" aria-label="Overview of what we set up">
-          <h3>What Mailbox Innovations does for you</h3>
-          <div class="hero-card-grid">
-            <div>
-              <div class="hero-card-section-title">Platforms</div>
-              <div class="chip-row">
-                <span class="chip">Microsoft 365 Exchange</span>
-                <span class="chip">Google Workspace</span>
-                <span class="chip">Hybrid and migrations</span>
+        <!-- HERO VISUAL: animated inbox + email/tech photo -->
+        <aside class="hero-visual" aria-label="Inbox and email setup example">
+          <div class="hero-visual-header">
+            <div class="hero-visual-title">
+              <span class="hero-visual-dot"></span>
+              <span>Inbox · mailboxinnovations.com</span>
+            </div>
+            <span>Secure · Managed</span>
+          </div>
+          <div class="hero-visual-body">
+            <div class="mock-inbox">
+              <div class="mock-inbox-header">
+                <span>Today</span>
+                <span>All mail ▾</span>
               </div>
-
-              <div class="stacked">
-                <strong>From personal to professional</strong>
-                <span>
-                  We take existing personal Gmail accounts and move them to real
-                  business mailboxes, with the same familiar tools and a cleaner brand.
-                </span>
+              <div class="mock-inbox-row">
+                <div>
+                  <strong>Welcome to your new domain</strong>
+                  <span>Mailbox Innovations · DNS & security configured</span>
+                </div>
+                <div class="mock-inbox-tag">Go live</div>
+              </div>
+              <div class="mock-inbox-row">
+                <div>
+                  <strong>Billing @ yourcompany.com</strong>
+                  <span>Clients now see a professional address on every invoice.</span>
+                </div>
+                <div class="mock-inbox-tag">Brand</div>
+              </div>
+              <div class="mock-inbox-row">
+                <div>
+                  <strong>Microsoft 365 / Google Workspace</strong>
+                  <span>Your team continues using Outlook or Gmail, just on a real domain.</span>
+                </div>
+                <div class="mock-inbox-tag">Setup</div>
               </div>
             </div>
-            <div>
-              <div class="hero-card-section-title">Included in every setup</div>
-              <ul class="list">
-                <li><span class="icon">✔</span><span>Domain purchase and DNS management</span></li>
-                <li><span class="icon">✔</span><span>Mailbox creation and aliases</span></li>
-                <li><span class="icon">✔</span><span>Security records and spam protection</span></li>
-              </ul>
+            <div class="hero-photo">
+              <!-- REPLACE THIS SRC WITH YOUR OWN EMAIL/TECH PHOTO -->
+              <img src="https://images.pexels.com/photos/1181675/pexels-photo-1181675.jpeg?auto=compress&dpr=2&w=600"
+                   alt="Team collaborating over email setup on laptops" />
+              <div class="hero-photo-caption">
+                Real business email, same tools your team already knows.
+              </div>
             </div>
           </div>
           <div class="tagline-strip">
@@ -880,6 +1063,34 @@
             </div>
           </div>
         </div>
+
+        <!-- TECH / EMAIL IMAGE STRIP -->
+        <div class="visual-strip">
+          <div class="visual-card">
+            <!-- Replace the src with your own "DNS / dashboard" image -->
+            <img src="https://images.pexels.com/photos/1181467/pexels-photo-1181467.jpeg?auto=compress&dpr=2&w=600"
+                 alt="DNS and infrastructure dashboard on screen" />
+            <div class="visual-card-caption">
+              DNS and records configured so Microsoft 365 and Google Workspace trust your domain.
+            </div>
+          </div>
+          <div class="visual-card">
+            <!-- Replace with an "email team" type image -->
+            <img src="https://images.pexels.com/photos/1181671/pexels-photo-1181671.jpeg?auto=compress&dpr=2&w=600"
+                 alt="Team working on laptops and email" />
+            <div class="visual-card-caption">
+              Your team continues using Outlook or Gmail, now on a real business domain.
+            </div>
+          </div>
+          <div class="visual-card">
+            <!-- Replace with a "cybersecurity / shield" image -->
+            <img src="https://images.pexels.com/photos/5380643/pexels-photo-5380643.jpeg?auto=compress&dpr=2&w=600"
+                 alt="Cybersecurity concept on digital screen" />
+            <div class="visual-card-caption">
+              Email security records help protect your brand from spoofing and phishing.
+            </div>
+          </div>
+        </div>
       </section>
 
       <!-- PROCESS -->
@@ -975,3 +1186,102 @@
         </div>
         <div class="faq-list">
           <div class="faq-item">
+            <strong>Can I keep using my current Gmail account?</strong>
+            <p>
+              In most cases, you will sign into a new business account that looks
+              almost the same as Gmail, but under your company domain. We can also
+              set up forwarding from your old personal address if needed.
+            </p>
+          </div>
+          <div class="faq-item">
+            <strong>Do you provide the Microsoft or Google licenses?</strong>
+            <p>
+              We help you choose the right plan and set everything up. You can pay
+              Microsoft or Google directly or work with a reseller. We do not lock you
+              into a contract for the licenses.
+            </p>
+          </div>
+          <div class="faq-item">
+            <strong>Will there be downtime?</strong>
+            <p>
+              We plan changes so that you can keep reading mail while DNS updates
+              spread. There can be a short window where messages flow to both old and
+              new mailboxes, and we explain how to handle that.
+            </p>
+          </div>
+          <div class="faq-item">
+            <strong>Can you manage DNS and email security long term?</strong>
+            <p>
+              Yes. If you want us to keep an eye on your DNS, SPF, DKIM, and DMARC
+              records, we can include that as part of ongoing management.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- CONTACT -->
+      <section id="contact">
+        <div class="section-header">
+          <h3>Contact</h3>
+          <p>Send a quick summary of what you are using now and what you want to improve.</p>
+        </div>
+        <div class="contact-grid">
+          <form action="mailto:info@mailboxinnovations.com" method="post" enctype="text/plain">
+            <div>
+              <label for="name">Name</label>
+              <input id="name" name="Name" type="text" placeholder="Your name" required>
+            </div>
+            <div>
+              <label for="email">Email</label>
+              <input id="email" name="Email" type="email" placeholder="you@company.com" required>
+            </div>
+            <div>
+              <label for="company">Company (optional)</label>
+              <input id="company" name="Company" type="text" placeholder="Company name">
+            </div>
+            <div>
+              <label for="message">What are you using now and how many users?</label>
+              <textarea id="message" name="Message" placeholder="Example: 5 users on personal Gmail, want to move to a custom domain and set up shared inboxes."></textarea>
+            </div>
+            <button type="submit" class="btn-primary">
+              Send message
+            </button>
+            <div class="contact-hint">
+              Or email directly:
+              <a href="mailto:info@mailboxinnovations.com">info@mailboxinnovations.com</a>
+            </div>
+          </form>
+          <div>
+            <p>
+              Mailbox Innovations focuses on one clear job:
+              get your business onto a proper email domain and keep it running smoothly.
+            </p>
+            <p style="margin-top:6px;">
+              We handle:
+            </p>
+            <ul class="list">
+              <li><span class="icon">✔</span><span>Buying and connecting your domain</span></li>
+              <li><span class="icon">✔</span><span>Microsoft Exchange or Google Workspace configuration</span></li>
+              <li><span class="icon">✔</span><span>DNS and email security records</span></li>
+              <li><span class="icon">✔</span><span>Mailbox creation and user onboarding</span></li>
+            </ul>
+            <p class="contact-hint">
+              Share a bit about where you are now and where you want to be.
+              We will reply with practical steps and an estimate.
+            </p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <span>© <span id="year"></span> Mailbox Innovations. All rights reserved.</span>
+      <span>Serving businesses that are ready to move beyond personal Gmail.</span>
+    </footer>
+  </div>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
