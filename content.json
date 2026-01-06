@@ -1,0 +1,23 @@
+// content.json
+{
+  "brandTitle": "Mailbox Innovations",
+  "brandSubtitle": "Professional email, domains, DNS, and security",
+
+  "heroKicker": "Upgrade from personal email",
+  "heroTitleHTML": "Get a real business inbox<br />with <span class=\"nowrap\">name@yourcompany.com</span>",
+  "heroSub": "If your business still uses personal Gmail accounts, we’ll move you to a professional setup using Microsoft 365 Exchange or Google Workspace. We handle the domain, DNS, and email security so it works reliably.",
+
+  "ctaPrimary": "Get a quote",
+  "ctaSecondary": "See services",
+
+  "servicesTitle": "Services",
+  "servicesSub": "We set up business email the right way: domain, DNS, mailboxes, and security.",
+
+  "setupTitle": "How we set up your company email",
+  "setupSub": "A simple process that gets you from personal accounts to a professional, secure email setup.",
+
+  "contactTitle": "Contact",
+  "contactSub": "Tell us how many users you have and whether you prefer Microsoft 365 or Google Workspace.",
+  "contactEmailHref": "mailto:info@mailboxinnovations.com",
+  "contactEmailText": "Email us"
+}
