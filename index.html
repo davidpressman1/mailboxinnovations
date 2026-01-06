@@ -1,67 +1,61 @@
-<!-- index.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Mailbox Innovations | Professional Business Email</title>
-  <meta name="description" content="Mailbox Innovations sets up and manages professional business email with custom domains, Microsoft 365 Exchange, Google Workspace, DNS, and email security.">
+  <title>Mailbox Innovations</title>
+  <meta name="description" content="Professional email, domains, DNS, and security for businesses moving off personal Gmail accounts." />
   <link rel="stylesheet" href="style.css" />
 </head>
 
 <body>
   <div class="wrap">
+
+    <!-- HEADER -->
     <header>
       <div class="brand">
-        <svg class="logo" viewBox="0 0 64 64" role="img" aria-label="Mailbox Innovations logo">
-          <defs>
-            <linearGradient id="lg" x1="0" y1="0" x2="1" y2="1">
-              <stop offset="0" stop-color="#1a73e8"/>
-              <stop offset="1" stop-color="#34a853"/>
-            </linearGradient>
-          </defs>
-          <rect x="10" y="14" width="44" height="30" rx="10" fill="#fff" stroke="url(#lg)" stroke-width="2.2"/>
-          <path d="M14 18 L32 30 L50 18" fill="none" stroke="#1a73e8" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"/>
-          <path d="M16 40 L26 31 L32 35 L38 31 L48 40" fill="none" stroke="#34a853" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/>
-          <circle cx="49" cy="43" r="7" fill="rgba(26,115,232,.10)" stroke="rgba(26,115,232,.40)"/>
-          <path d="M46.8 43.5 L48.6 45.2 L51.6 41.9" fill="none" stroke="#1a73e8" stroke-width="2" stroke-linecap="round"/>
-        </svg>
-
+        <!-- Put your logo image in this folder and name it logo.png -->
+        <img src="logo.png" alt="Mailbox Innovations logo" class="brand-logo" />
         <div>
-          <h1 id="brandTitle">Mailbox Innovations</h1>
-          <p id="brandSubtitle">Professional email, domains, DNS, and security</p>
+          <h1>MAILBOX INNOVATIONS</h1>
+          <p>Professional email, domains, DNS, and security</p>
         </div>
       </div>
 
       <nav>
-        <a class="nav" href="#services">Services</a>
-        <a class="nav" href="#setup">Setup steps</a>
-        <a class="nav" href="#contact">Contact</a>
+        <a href="#services" class="nav">Services</a>
+        <a href="#pricing" class="nav">Who it’s for</a>
+        <a href="#steps" class="nav">Setup steps</a>
+        <a href="#contact" class="nav">Contact</a>
       </nav>
     </header>
 
-    <div class="hero" id="top">
+    <!-- HERO -->
+    <section class="hero" id="top">
       <div class="hero-inner">
-        <div class="hero-copy">
-          <div class="hero-kicker" id="heroKicker">Upgrade from personal email</div>
 
-          <h2 class="hero-title" id="heroTitle">
+        <div class="hero-copy">
+          <div class="hero-kicker">Upgrade from personal email</div>
+
+          <h2 class="hero-title">
             Get a real business inbox<br />
             with <span class="nowrap">name@yourcompany.com</span>
           </h2>
 
-          <p class="hero-sub" id="heroSub">
-            If your business still uses personal Gmail accounts, we’ll move you to a professional setup
-            using Microsoft 365 Exchange or Google Workspace. We handle the domain, DNS, and email security so it works reliably.
+          <p class="hero-sub">
+            If your business still uses personal Gmail accounts, we’ll move you to a
+            professional setup using Microsoft 365 Exchange or Google Workspace.
+            We handle the domain, DNS, and email security so it works reliably.
           </p>
 
           <div class="hero-ctas">
-            <a class="btnPrimary" href="#contact" id="ctaPrimary">Get a quote</a>
-            <a class="btnGhost" href="#services" id="ctaSecondary">See services</a>
+            <a href="#contact" class="btnPrimary">Get a quote</a>
+            <a href="#services" class="btnGhost">See services</a>
           </div>
         </div>
 
-        <div class="hero-preview" aria-label="Email preview">
+        <!-- PREVIEW -->
+        <div class="hero-preview">
           <div class="preview-frame">
             <div class="preview-top">
               <span class="preview-site">Mailbox Innovations</span>
@@ -71,17 +65,18 @@
             <div class="preview-body">
               <div class="compose">
                 <div class="compose-row">
-                  <strong>From</strong>
-                  <div>hello@yourcompany.com</div>
+                  <strong>FROM</strong>
+                  <span>hello@yourcompany.com</span>
                 </div>
                 <div class="compose-row">
-                  <strong>Subject</strong>
-                  <div>Your new business email is ready</div>
+                  <strong>SUBJECT</strong>
+                  <span>Your new business email is ready</span>
                 </div>
 
                 <div class="compose-main">
-                  Your domain is connected, mailboxes are created, and authentication records are in place.
-                  Your team can keep working in Outlook or Gmail with a professional address.
+                  Your domain is connected, mailboxes are created, and authentication
+                  records are in place. Your team can keep working in Outlook or Gmail
+                  with a professional address.
                 </div>
 
                 <div class="compose-actions">
@@ -90,130 +85,176 @@
                 </div>
               </div>
             </div>
-
           </div>
         </div>
-      </div>
-    </div>
 
-    <main class="stack">
+      </div>
+    </section>
+
+    <div class="stack">
+
+      <!-- SERVICES -->
       <section id="services">
-        <h3 class="sectionTitle" id="servicesTitle">Services</h3>
-        <p class="sectionSub" id="servicesSub">
+        <h3 class="sectionTitle">Services</h3>
+        <p class="sectionSub">
           We set up business email the right way: domain, DNS, mailboxes, and security.
         </p>
 
         <div class="strip">
+
+          <!-- DNS -->
           <div class="visual-card">
             <div class="visual-hero">
               <div class="visual-title">
                 <h4>DNS and verification configured the right way</h4>
                 <span class="tag">DNS</span>
               </div>
+            </div>
 
-              <div class="icon-panel">
-                <div class="big-icon" aria-hidden="true">
-                  <svg width="54" height="54" viewBox="0 0 64 64">
-                    <defs>
-                      <linearGradient id="dnsG" x1="0" y1="0" x2="1" y2="1">
-                        <stop offset="0" stop-color="#1a73e8"/>
-                        <stop offset="1" stop-color="#34a853"/>
-                      </linearGradient>
-                    </defs>
-                    <circle cx="32" cy="32" r="18" fill="rgba(26,115,232,.10)" stroke="url(#dnsG)" stroke-width="2.2"/>
-                    <path d="M14 32h36" stroke="rgba(32,33,36,.30)" stroke-width="2" stroke-linecap="round"/>
-                    <path d="M32 14c6 6 6 30 0 36" stroke="rgba(32,33,36,.30)" stroke-width="2" stroke-linecap="round"/>
-                    <path d="M32 14c-6 6-6 30 0 36" stroke="rgba(32,33,36,.30)" stroke-width="2" stroke-linecap="round"/>
-                    <circle cx="14" cy="18" r="3.2" fill="#1a73e8"/>
-                    <circle cx="50" cy="20" r="3.2" fill="#34a853"/>
-                    <circle cx="52" cy="44" r="3.2" fill="#fbbc04"/>
-                    <circle cx="16" cy="46" r="3.2" fill="#ea4335"/>
-                  </svg>
-                </div>
+            <div class="icon-panel">
+              <div class="big-icon" aria-hidden="true">
+                <svg width="44" height="44" viewBox="0 0 24 24" fill="none">
+                  <path d="M12 2c3.9 0 7 2.2 7 5s-3.1 5-7 5-7-2.2-7-5 3.1-5 7-5Z" stroke="currentColor" stroke-width="1.6" opacity=".9"/>
+                  <path d="M5 7v5c0 2.8 3.1 5 7 5s7-2.2 7-5V7" stroke="currentColor" stroke-width="1.6" opacity=".6"/>
+                  <path d="M5 12v5c0 2.8 3.1 5 7 5s7-2.2 7-5v-5" stroke="currentColor" stroke-width="1.6" opacity=".35"/>
+                </svg>
               </div>
             </div>
+
             <div class="visual-caption">
-              We connect your domain and set the required DNS records so Microsoft 365 or Google Workspace can verify and deliver email correctly.
+              We connect your domain and set the required DNS records so Microsoft 365 or
+              Google Workspace can verify and deliver email correctly.
             </div>
           </div>
 
+          <!-- APPS -->
           <div class="visual-card">
             <div class="visual-hero">
               <div class="visual-title">
                 <h4>Your team stays productive on Outlook or Gmail</h4>
                 <span class="tag">Apps</span>
               </div>
+            </div>
 
-              <div class="logo-row" aria-hidden="true">
-                <div class="logo-chip"><span class="mark gmail">M</span><span>Gmail</span></div>
-                <div class="logo-chip"><span class="mark outlook">O</span><span>Outlook</span></div>
-              </div>
+            <div class="logo-row">
+              <span class="logo-chip"><span class="mark gmail">M</span> Gmail</span>
+              <span class="logo-chip"><span class="mark outlook">O</span> Outlook</span>
+            </div>
 
-              <div class="icon-panel">
-                <div class="big-icon" aria-hidden="true">
-                  <svg width="54" height="54" viewBox="0 0 64 64">
-                    <rect x="14" y="18" width="36" height="24" rx="6" fill="rgba(26,115,232,.10)" stroke="rgba(26,115,232,.45)" stroke-width="2"/>
-                    <path d="M20 26h24" stroke="rgba(32,33,36,.28)" stroke-width="2" stroke-linecap="round"/>
-                    <path d="M20 32h18" stroke="rgba(32,33,36,.28)" stroke-width="2" stroke-linecap="round"/>
-                    <path d="M18 46h28" stroke="rgba(32,33,36,.28)" stroke-width="3" stroke-linecap="round"/>
-                  </svg>
-                </div>
+            <div class="icon-panel">
+              <div class="big-icon" aria-hidden="true">
+                <svg width="44" height="44" viewBox="0 0 24 24" fill="none">
+                  <path d="M4 4h16v10l-2 6H6l-2-6V4Z" stroke="currentColor" stroke-width="1.6" opacity=".9"/>
+                  <path d="M4 14h5l1.3 2h3.4L15 14h5" stroke="currentColor" stroke-width="1.6" opacity=".6"/>
+                </svg>
               </div>
             </div>
+
             <div class="visual-caption">
-              We set up mailboxes, aliases, and sign-in so users can keep working in the apps they already know, with a professional company address.
+              We set up mailboxes, aliases, and sign-in so users can keep working in the apps they already
+              know, with a professional company address.
             </div>
           </div>
 
+          <!-- AUTH -->
           <div class="visual-card">
             <div class="visual-hero">
               <div class="visual-title">
                 <h4>Authentication records help protect your domain</h4>
                 <span class="tag">SPF/DKIM/DMARC</span>
               </div>
+            </div>
 
-              <div class="icon-panel">
-                <div class="big-icon" aria-hidden="true">
-                  <svg width="54" height="54" viewBox="0 0 64 64">
-                    <defs>
-                      <linearGradient id="secG" x1="0" y1="0" x2="1" y2="1">
-                        <stop offset="0" stop-color="#1a73e8"/>
-                        <stop offset="1" stop-color="#34a853"/>
-                      </linearGradient>
-                    </defs>
-                    <path d="M32 10l16 7v14c0 12-8 19-16 23-8-4-16-11-16-23V17l16-7z"
-                          fill="rgba(26,115,232,.10)" stroke="url(#secG)" stroke-width="2"/>
-                    <rect x="22" y="30" width="20" height="16" rx="6" fill="#fff" stroke="rgba(32,33,36,.30)" stroke-width="2"/>
-                    <path d="M26 30v-3c0-4 3-7 6-7s6 3 6 7v3" fill="none" stroke="rgba(32,33,36,.30)" stroke-width="2" stroke-linecap="round"/>
-                    <circle cx="32" cy="38" r="2.2" fill="#1a73e8"/>
-                    <path d="M32 40v4" stroke="#1a73e8" stroke-width="2" stroke-linecap="round"/>
-                  </svg>
-                </div>
+            <div class="icon-panel">
+              <div class="big-icon" aria-hidden="true">
+                <svg width="44" height="44" viewBox="0 0 24 24" fill="none">
+                  <path d="M12 2 20 6v7c0 5-3.4 8.7-8 9-4.6-.3-8-4-8-9V6l8-4Z" stroke="currentColor" stroke-width="1.6" opacity=".9"/>
+                  <path d="M9.5 12a2.5 2.5 0 1 1 5 0v2.5a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2V12Z" stroke="currentColor" stroke-width="1.6" opacity=".6"/>
+                </svg>
               </div>
             </div>
+
             <div class="visual-caption">
-              We configure SPF, DKIM, and DMARC so recipients can verify your messages and reduce spoofing and phishing attempts.
+              We configure SPF, DKIM, and DMARC so recipients can verify your messages and reduce spoofing
+              and phishing attempts.
             </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- WHO IT'S FOR + PRICING -->
+      <section id="pricing">
+        <h3 class="sectionTitle">Who this is for</h3>
+        <p class="sectionSub">
+          If your business still uses personal Gmail accounts, we’ll get you onto a clean, professional email setup with the right DNS and security.
+        </p>
+
+        <div class="pricingGrid">
+          <div class="priceCard">
+            <div class="priceTop">
+              <h4>Starter</h4>
+              <span class="priceTag">Best for 1–3 users</span>
+            </div>
+            <p class="priceDesc">New domain or existing domain, mailbox setup, and basic security.</p>
+            <ul class="priceList">
+              <li>Domain + DNS verification</li>
+              <li>Mailboxes + aliases</li>
+              <li>SPF/DKIM/DMARC</li>
+              <li>Connect phones + Outlook/Gmail</li>
+            </ul>
+            <a class="btnPrimary" href="#contact">Request pricing</a>
+          </div>
+
+          <div class="priceCard featured">
+            <div class="priceTop">
+              <h4>Business</h4>
+              <span class="priceTag">Most popular</span>
+            </div>
+            <p class="priceDesc">For small teams that want a smooth cutover and helpful support.</p>
+            <ul class="priceList">
+              <li>Everything in Starter</li>
+              <li>User migration planning</li>
+              <li>Shared mailboxes + groups</li>
+              <li>Admin hardening + MFA</li>
+            </ul>
+            <a class="btnPrimary" href="#contact">Request pricing</a>
+          </div>
+
+          <div class="priceCard">
+            <div class="priceTop">
+              <h4>Managed</h4>
+              <span class="priceTag">Ongoing management</span>
+            </div>
+            <p class="priceDesc">We keep DNS, deliverability, and security settings maintained.</p>
+            <ul class="priceList">
+              <li>DNS + email security monitoring</li>
+              <li>Changes and adds/removes</li>
+              <li>Deliverability tune-ups</li>
+              <li>Support for issues</li>
+            </ul>
+            <a class="btnPrimary" href="#contact">Request pricing</a>
           </div>
         </div>
       </section>
 
-      <section id="setup">
-        <h3 class="sectionTitle" id="setupTitle">How we set up your company email</h3>
-        <p class="sectionSub" id="setupSub">
-          A simple process that gets you from personal accounts to a professional, secure email setup.
+      <!-- SETUP STEPS -->
+      <section id="steps">
+        <h3 class="sectionTitle">Setup steps</h3>
+        <p class="sectionSub">
+          Here’s how we move you from personal email to a professional company inbox without disruption.
         </p>
 
         <div class="steps">
           <div class="step-card">
             <div class="step-num">1</div>
             <div>
-              <h4>Quick intake and plan</h4>
-              <p>We confirm your domain situation, number of users, preferred platform (Microsoft 365 or Google Workspace), and any existing mail you need migrated.</p>
+              <h4>Quick intake</h4>
+              <p>We confirm your domain, how many users you need, and whether you want Microsoft 365 or Google Workspace.</p>
               <div class="step-badges">
-                <span class="step-badge">Users & aliases</span>
-                <span class="step-badge">Exchange or Workspace</span>
-                <span class="step-badge">Migration needs</span>
+                <span class="step-badge">Users</span>
+                <span class="step-badge">Mailbox names</span>
+                <span class="step-badge">Platform choice</span>
               </div>
             </div>
           </div>
@@ -221,12 +262,12 @@
           <div class="step-card">
             <div class="step-num">2</div>
             <div>
-              <h4>Domain and DNS setup</h4>
-              <p>We purchase your domain if needed, then configure DNS records for mail routing and verification. This includes MX, SPF, DKIM, and DMARC.</p>
+              <h4>Domain and DNS</h4>
+              <p>We purchase/transfer the domain if needed, then configure DNS records and verification.</p>
               <div class="step-badges">
-                <span class="step-badge">Domain purchase</span>
-                <span class="step-badge">DNS records</span>
-                <span class="step-badge">SPF/DKIM/DMARC</span>
+                <span class="step-badge">MX</span>
+                <span class="step-badge">TXT</span>
+                <span class="step-badge">CNAME</span>
               </div>
             </div>
           </div>
@@ -234,34 +275,8 @@
           <div class="step-card">
             <div class="step-num">3</div>
             <div>
-              <h4>Create mailboxes and aliases</h4>
-              <p>We set up user inboxes and the common business addresses like info@, billing@, support@, and any groups or shared mailboxes.</p>
-              <div class="step-badges">
-                <span class="step-badge">User mailboxes</span>
-                <span class="step-badge">Shared mailboxes</span>
-                <span class="step-badge">Groups</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="step-card">
-            <div class="step-num">4</div>
-            <div>
-              <h4>Migrate existing email (if needed)</h4>
-              <p>If your team has mail in personal Gmail or another provider, we migrate it in a controlled way so you don’t lose history or contacts.</p>
-              <div class="step-badges">
-                <span class="step-badge">Email history</span>
-                <span class="step-badge">Contacts</span>
-                <span class="step-badge">Cutover plan</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="step-card">
-            <div class="step-num">5</div>
-            <div>
-              <h4>Device setup and sign-in</h4>
-              <p>We help users sign in on Outlook, Gmail, and mobile devices. We can also configure forwarding or send-as where needed.</p>
+              <h4>Mailboxes and devices</h4>
+              <p>We create mailboxes, aliases, and sign-in. We connect Outlook, Gmail, phones, and shared mailboxes.</p>
               <div class="step-badges">
                 <span class="step-badge">Outlook</span>
                 <span class="step-badge">Gmail</span>
@@ -271,74 +286,91 @@
           </div>
 
           <div class="step-card">
-            <div class="step-num">6</div>
+            <div class="step-num">4</div>
             <div>
-              <h4>Security and ongoing management</h4>
-              <p>We lock in best practices for security and deliverability, then monitor and maintain DNS and mail settings as your business grows.</p>
+              <h4>Security hardening</h4>
+              <p>We enable SPF/DKIM/DMARC and review key settings like MFA, admin access, and anti-phishing protections.</p>
               <div class="step-badges">
-                <span class="step-badge">Deliverability</span>
-                <span class="step-badge">Security</span>
-                <span class="step-badge">Ongoing support</span>
+                <span class="step-badge">MFA</span>
+                <span class="step-badge">SPF/DKIM/DMARC</span>
+                <span class="step-badge">Anti-phishing</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="step-card">
+            <div class="step-num">5</div>
+            <div>
+              <h4>Cutover and support</h4>
+              <p>We schedule a cutover window, confirm mail flow, and stay available after go-live for any issues.</p>
+              <div class="step-badges">
+                <span class="step-badge">Cutover plan</span>
+                <span class="step-badge">Verification</span>
+                <span class="step-badge">Support</span>
               </div>
             </div>
           </div>
         </div>
       </section>
 
+      <!-- CONTACT -->
       <section id="contact">
-        <h3 class="sectionTitle" id="contactTitle">Contact</h3>
-        <p class="sectionSub" id="contactSub">
-          Tell us how many users you have and whether you prefer Microsoft 365 or Google Workspace.
+        <h3 class="sectionTitle">Contact</h3>
+        <p class="sectionSub">
+          Want a quote or want us to review your current setup? Send a message and we’ll respond quickly.
         </p>
-        <a class="contactBtn" id="contactEmail" href="mailto:info@mailboxinnovations.com">Email us</a>
+
+        <!-- Formspree: replace YOUR_FORM_ID after you create it -->
+        <form class="contactForm" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+          <div class="formGrid">
+            <label class="field">
+              <span>Name</span>
+              <input name="name" type="text" placeholder="Your name" required />
+            </label>
+
+            <label class="field">
+              <span>Business email</span>
+              <input name="email" type="email" placeholder="you@company.com" required />
+            </label>
+
+            <label class="field">
+              <span>Company</span>
+              <input name="company" type="text" placeholder="Company name" />
+            </label>
+
+            <label class="field">
+              <span>How many users?</span>
+              <select name="users">
+                <option value="1-3">1–3</option>
+                <option value="4-10">4–10</option>
+                <option value="11-25">11–25</option>
+                <option value="26+">26+</option>
+              </select>
+            </label>
+
+            <label class="field fieldFull">
+              <span>What do you need?</span>
+              <textarea name="message" rows="5" placeholder="Example: move from personal Gmail to Google Workspace, set up DNS + SPF/DKIM/DMARC, and connect Outlook on 6 computers."></textarea>
+            </label>
+          </div>
+
+          <div class="formActions">
+            <button class="btnPrimary" type="submit">Send message</button>
+            <p class="formNote">We typically reply the same day.</p>
+          </div>
+        </form>
       </section>
-    </main>
+
+      <footer class="footer">
+        <span>© <span id="year"></span> Mailbox Innovations</span>
+        <a class="footerLink" href="#top">Back to top</a>
+      </footer>
+
+    </div>
   </div>
 
-  <!-- Optional: load text content from JSON -->
   <script>
-    (async () => {
-      try {
-        const res = await fetch('./content.json', { cache: 'no-store' });
-        if (!res.ok) return;
-        const data = await res.json();
-
-        const setText = (id, value) => {
-          const el = document.getElementById(id);
-          if (el && typeof value === 'string') el.textContent = value;
-        };
-
-        setText('brandTitle', data.brandTitle);
-        setText('brandSubtitle', data.brandSubtitle);
-
-        setText('heroKicker', data.heroKicker);
-        if (data.heroTitleHTML) {
-          const el = document.getElementById('heroTitle');
-          if (el) el.innerHTML = data.heroTitleHTML;
-        }
-        setText('heroSub', data.heroSub);
-
-        setText('ctaPrimary', data.ctaPrimary);
-        setText('ctaSecondary', data.ctaSecondary);
-
-        setText('servicesTitle', data.servicesTitle);
-        setText('servicesSub', data.servicesSub);
-
-        setText('setupTitle', data.setupTitle);
-        setText('setupSub', data.setupSub);
-
-        setText('contactTitle', data.contactTitle);
-        setText('contactSub', data.contactSub);
-
-        if (data.contactEmailHref) {
-          const a = document.getElementById('contactEmail');
-          if (a) a.href = data.contactEmailHref;
-        }
-        if (data.contactEmailText) setText('contactEmail', data.contactEmailText);
-      } catch (e) {
-        /* no-op */
-      }
-    })();
+    document.getElementById("year").textContent = new Date().getFullYear();
   </script>
 </body>
 </html>
